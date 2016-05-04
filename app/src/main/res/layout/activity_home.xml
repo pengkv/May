@@ -5,15 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
+    <data>
+        <variable name="image" type="com.pengkv.may.model.bean.ImageDetailBean"/>
+    </data>
+
     <ImageView
+        android:id="@+id/iv_img"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 
-    <Button
+    <TextView
+        android:layout_below="@id/iv_img"
         android:onClick="onClick"
+        android:clickable="true"
+        android:text="@{image.id}"
+        tools:text="编号"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

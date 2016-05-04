@@ -1,6 +1,5 @@
 package com.pengkv.may.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +15,7 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
     }
 
 
@@ -26,7 +25,7 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
             GetImageListParam param = new GetImageListParam("1","10","1");
             ApiClient.getImageList(this, param, tag);
         }else if (tag==TAG_B){
-            GetImageDetailParam param = new GetImageDetailParam("710");
+            GetImageDetailParam param = new GetImageDetailParam("711");
             ApiClient.getImageDetail(this, param, tag);
         }
 
@@ -40,7 +39,8 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(MainActivity.this,HomeActivity.class));
+        fetchData(TAG_B);
+//        startActivity(new Intent(MainActivity.this,HomeActivity.class));
     }
 
 }

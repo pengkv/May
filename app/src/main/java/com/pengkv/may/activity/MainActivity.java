@@ -1,21 +1,37 @@
 package com.pengkv.may.activity;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import com.pengkv.may.R;
 import com.pengkv.may.config.ApiClient;
+import com.pengkv.may.databinding.ActivityHomeBinding;
 import com.pengkv.may.interfaces.IRequestHander;
+import com.pengkv.may.model.bean.ImageDetailBean;
 import com.pengkv.may.model.param.GetImageDetailParam;
 import com.pengkv.may.model.param.GetImageListParam;
 
 public class MainActivity extends BaseActivity implements IRequestHander,View.OnClickListener{
 
+
+    ActivityHomeBinding binding;
+    ImageDetailBean mBean;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+//        setContentView(R.layout.activity_home);
+
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+//        mBean=new ImageDetailBean(1,1,"1","1",1,1,1,1,null);
+//        binding.setImage(mBean);
+//        fetchData(TAG_B);
+
+        ActivityHomeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+//        User user = new User("Test", "User");
+//        binding.setUser(user);
     }
 
 
@@ -34,6 +50,8 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
     @Override
     public void updateUI(Object response, int tag) {
         Log.v("-->",response.toString());
+        mBean=(ImageDetailBean)response;
+        binding.setImage(mBean);
 
     }
 

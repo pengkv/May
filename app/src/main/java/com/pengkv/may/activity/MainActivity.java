@@ -24,14 +24,9 @@ public class MainActivity extends BaseActivity implements IRequestHander, View.O
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_home);
 
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-//        mBean=new ImageDetailBean(1,1,"1","1",1,1,1,1,null);
-//        binding.setImage(mBean);
-//        fetchData(TAG_B);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        fetchData(TAG_B);
 
-        ActivityHomeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-//        User user = new User("Test", "User");
-//        binding.setUser(user);
     }
 
 
@@ -52,7 +47,6 @@ public class MainActivity extends BaseActivity implements IRequestHander, View.O
         Log.v("-->", response.toString());
         mBean = (ImageDetailBean) response;
         binding.setImage(mBean);
-
     }
 
     @Override
@@ -61,4 +55,14 @@ public class MainActivity extends BaseActivity implements IRequestHander, View.O
 //        startActivity(new Intent(MainActivity.this,HomeActivity.class));
     }
 
+
+    public class MyHandlers {
+        public void onClickFriend(View view) {
+            Log.v("-->", "onClickFriend");
+        }
+
+        public void onClickEnemy(View view) {
+            Log.v("-->", "onClickEnemy");
+        }
+    }
 }

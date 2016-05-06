@@ -13,7 +13,7 @@ import com.pengkv.may.model.bean.ImageDetailBean;
 import com.pengkv.may.model.param.GetImageDetailParam;
 import com.pengkv.may.model.param.GetImageListParam;
 
-public class MainActivity extends BaseActivity implements IRequestHander,View.OnClickListener{
+public class MainActivity extends BaseActivity implements IRequestHander, View.OnClickListener {
 
 
     ActivityHomeBinding binding;
@@ -37,10 +37,10 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
 
     @Override
     public void fetchData(int tag) {
-        if (tag==TAG_A){
-            GetImageListParam param = new GetImageListParam("1","10","1");
+        if (tag == TAG_A) {
+            GetImageListParam param = new GetImageListParam("1", "10", "1");
             ApiClient.getImageList(this, param, tag);
-        }else if (tag==TAG_B){
+        } else if (tag == TAG_B) {
             GetImageDetailParam param = new GetImageDetailParam("711");
             ApiClient.getImageDetail(this, param, tag);
         }
@@ -49,8 +49,8 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
 
     @Override
     public void updateUI(Object response, int tag) {
-        Log.v("-->",response.toString());
-        mBean=(ImageDetailBean)response;
+        Log.v("-->", response.toString());
+        mBean = (ImageDetailBean) response;
         binding.setImage(mBean);
 
     }

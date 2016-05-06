@@ -13,7 +13,7 @@ import com.pengkv.may.model.bean.ImageDetailBean;
 import com.pengkv.may.model.param.GetImageDetailParam;
 import com.pengkv.may.model.param.GetImageListParam;
 
-public class MainActivity extends BaseActivity implements IRequestHander,View.OnClickListener{
+public class MainActivity extends BaseActivity implements IRequestHander, View.OnClickListener {
 
 
     ActivityHomeBinding binding;
@@ -24,23 +24,18 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_home);
 
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-//        mBean=new ImageDetailBean(1,1,"1","1",1,1,1,1,null);
-//        binding.setImage(mBean);
-//        fetchData(TAG_B);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        fetchData(TAG_B);
 
-        ActivityHomeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-//        User user = new User("Test", "User");
-//        binding.setUser(user);
     }
 
 
     @Override
     public void fetchData(int tag) {
-        if (tag==TAG_A){
-            GetImageListParam param = new GetImageListParam("1","10","1");
+        if (tag == TAG_A) {
+            GetImageListParam param = new GetImageListParam("1", "10", "1");
             ApiClient.getImageList(this, param, tag);
-        }else if (tag==TAG_B){
+        } else if (tag == TAG_B) {
             GetImageDetailParam param = new GetImageDetailParam("711");
             ApiClient.getImageDetail(this, param, tag);
         }
@@ -49,10 +44,9 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
 
     @Override
     public void updateUI(Object response, int tag) {
-        Log.v("-->",response.toString());
-        mBean=(ImageDetailBean)response;
+        Log.v("-->", response.toString());
+        mBean = (ImageDetailBean) response;
         binding.setImage(mBean);
-
     }
 
     @Override
@@ -61,4 +55,14 @@ public class MainActivity extends BaseActivity implements IRequestHander,View.On
 //        startActivity(new Intent(MainActivity.this,HomeActivity.class));
     }
 
+
+    public class MyHandlers {
+        public void onClickFriend(View view) {
+            Log.v("-->", "onClickFriend");
+        }
+
+        public void onClickEnemy(View view) {
+            Log.v("-->", "onClickEnemy");
+        }
+    }
 }

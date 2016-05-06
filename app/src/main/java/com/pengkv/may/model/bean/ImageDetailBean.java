@@ -1,5 +1,7 @@
 package com.pengkv.may.model.bean;
 
+import com.pengkv.may.config.Basic;
+
 import java.util.List;
 
 /**
@@ -8,14 +10,14 @@ import java.util.List;
 public class ImageDetailBean extends BaseBean {
 
     private int id;
-    private int  galleryclass ;//          图片分类
-    private String title     ;//          标题
-    private String img     ;//          图库封面
-    private int count     ;//          访问数
-    private int rcount     ;//           回复数
-    private int fcount     ;//          收藏数
-    private int size     ;//      图片多少张
-    private List<SimpleImageBean> list ;// 简单图片类
+    private int galleryclass;//          图片分类
+    private String title;//          标题
+    private String img;//          图库封面
+    private int count;//          访问数
+    private int rcount;//           回复数
+    private int fcount;//          收藏数
+    private int size;//      图片多少张
+    private List<SimpleImageBean> list;// 简单图片类
 
     public ImageDetailBean() {
     }
@@ -57,7 +59,7 @@ public class ImageDetailBean extends BaseBean {
     }
 
     public String getImg() {
-        return img;
+        return Basic.URL_BASE_IMAGE + img;
     }
 
     public void setImg(String img) {

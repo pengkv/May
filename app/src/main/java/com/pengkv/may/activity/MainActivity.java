@@ -1,5 +1,6 @@
 package com.pengkv.may.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,7 +8,7 @@ import android.view.View;
 
 import com.pengkv.may.R;
 import com.pengkv.may.config.ApiClient;
-import com.pengkv.may.databinding.ActivityHomeBinding;
+import com.pengkv.may.databinding.ActivityMainBinding;
 import com.pengkv.may.interfaces.IRequestHander;
 import com.pengkv.may.model.bean.ImageDetailBean;
 import com.pengkv.may.model.param.GetImageDetailParam;
@@ -16,14 +17,14 @@ import com.pengkv.may.model.param.GetImageListParam;
 public class MainActivity extends BaseActivity implements IRequestHander, View.OnClickListener {
 
 
-    ActivityHomeBinding binding;
+    ActivityMainBinding binding;
     ImageDetailBean mBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         fetchData(TAG_B);
 
     }
@@ -51,7 +52,7 @@ public class MainActivity extends BaseActivity implements IRequestHander, View.O
     @Override
     public void onClick(View v) {
         fetchData(TAG_B);
-//        startActivity(new Intent(MainActivity.this,HomeActivity.class));
+        startActivity(new Intent(MainActivity.this, NormalHomeActivity.class));
     }
 
 

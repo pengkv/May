@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -24,6 +25,11 @@ public class BaseActivity extends AppCompatActivity {
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);//状态栏变透明
         }
         initToolbar();
+
+        //获取当前页面的名字
+        String contextString = this.toString();
+        Log.v("ActivityName", contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@")));
+
     }
 
     //初始化标题栏
@@ -31,11 +37,10 @@ public class BaseActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
+            TextView mLeftTV = (TextView) toolbar.findViewById(R.id.tv_bar_left);
+            TextView mTitleTV = (TextView) toolbar.findViewById(R.id.tv_bar_title);
+            TextView mRightTV = (TextView) toolbar.findViewById(R.id.tv_bar_right);
         }
-        TextView mLeftTV = (TextView) toolbar.findViewById(R.id.tv_bar_left);
-        TextView mTitleTV = (TextView) toolbar.findViewById(R.id.tv_bar_title);
-        TextView mRightTV = (TextView) toolbar.findViewById(R.id.tv_bar_right);
-
 
     }
 

@@ -8,8 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--标题栏主题-->
     <style name="CustomToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="contentInsetStart">0dp</item>
+    </style>
+
+    <!--主页底部选择按钮-->
+    <style name="MainRadioButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@drawable/selector_rb_main</item>
+    </style>
+    <!--取消背景点击效果-->
+    <!--<item name="android:background">@null</item>-->
+
+    <!--分割线-->
+    <style name="DivederView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#CCCCCC</item>
+        <item name="android:layout_alignParentBottom">true</item>
     </style>
 
 </resources>

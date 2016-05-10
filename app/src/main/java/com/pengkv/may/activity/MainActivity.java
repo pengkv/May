@@ -22,7 +22,6 @@ public class MainActivity extends BaseActivity implements IRequestHander, View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         fetchData(TAG_B);

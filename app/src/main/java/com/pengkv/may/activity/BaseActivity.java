@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -32,13 +33,43 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //初始化标题栏
-    public void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    public void initToolbar(Toolbar toolbar, String title) {
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            TextView mLeftTV = (TextView) toolbar.findViewById(R.id.tv_bar_left);
+            TextView mTitleTV = (TextView) toolbar.findViewById(R.id.tv_bar_title);
+
+            mLeftTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
+            mTitleTV.setText(title);
+
+        }
+    }
+
+    //初始化标题栏(带右侧菜单键)
+    public void initToolbar(Toolbar toolbar, String title, String menuStr) {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             TextView mLeftTV = (TextView) toolbar.findViewById(R.id.tv_bar_left);
             TextView mTitleTV = (TextView) toolbar.findViewById(R.id.tv_bar_title);
             TextView mRightTV = (TextView) toolbar.findViewById(R.id.tv_bar_right);
+
+            mLeftTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
+            mTitleTV.setText(title);
+
+            mRightTV.setVisibility(View.VISIBLE);
+            mRightTV.setText(menuStr);
         }
     }
 
@@ -46,4 +77,5 @@ public class BaseActivity extends AppCompatActivity {
     public <T> T $(int viewID) {
         return (T) findViewById(viewID);
     }
+
 }

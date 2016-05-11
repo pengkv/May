@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar"
-    style="@style/CustomToolbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    android:contentInsetLeft="0dp"
-    android:minHeight="?attr/actionBarSize"
-    android:paddingTop="@dimen/toolbar_padding_top"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    <LinearLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/CustomToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:contentInsetLeft="0dp"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingTop="@dimen/toolbar_padding_top"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <TextView
-            android:id="@+id/tv_bar_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:padding="10dp"
-            android:text="返回"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:visibility="invisible" />
-
-        <TextView
-            android:id="@+id/tv_bar_title"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="我是主页"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/tv_bar_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:padding="10dp"
-            android:text="菜单"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:visibility="invisible" />
+            <TextView
+                android:id="@+id/tv_bar_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="visible" />
 
-    </LinearLayout>
-</android.support.v7.widget.Toolbar>
+            <TextView
+                android:id="@+id/tv_bar_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="我是主页"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_bar_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="菜单"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+</layout>

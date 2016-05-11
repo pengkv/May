@@ -3,7 +3,6 @@ package com.pengkv.may.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 
 import com.pengkv.may.R;
@@ -26,6 +25,8 @@ public class MainActivity extends BaseActivity implements IRequestHander {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setHandler(new Handlers());
+
+        initToolbar(binding.bar.toolbar, "图片详情");
 
         fetchData(TAG_B);
 
@@ -64,10 +65,4 @@ public class MainActivity extends BaseActivity implements IRequestHander {
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 }

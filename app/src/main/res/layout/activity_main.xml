@@ -19,7 +19,9 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-        <include layout="@layout/view_toolbar" />
+        <include
+            android:id="@+id/bar"
+            layout="@layout/view_toolbar" />
 
         <ImageView
             android:id="@+id/iv_img"

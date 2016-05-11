@@ -1,9 +1,9 @@
 package com.pengkv.may.activity;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 
 import com.pengkv.may.R;
@@ -14,17 +14,19 @@ import com.pengkv.may.model.bean.ImageDetailBean;
 import com.pengkv.may.model.param.GetImageDetailParam;
 import com.pengkv.may.model.param.GetImageListParam;
 
-public class MainActivity extends BaseActivity implements IRequestHander, View.OnClickListener {
+public class MainActivity extends BaseActivity implements IRequestHander {
 
 
-    ActivityMainBinding binding;
-    ImageDetailBean mBean;
+    private ActivityMainBinding binding;
+    private ImageDetailBean mBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setHandler(new Handlers());
+
         fetchData(TAG_B);
 
     }
@@ -49,20 +51,23 @@ public class MainActivity extends BaseActivity implements IRequestHander, View.O
         binding.setImage(mBean);
     }
 
-    @Override
-    public void onClick(View v) {
-        fetchData(TAG_B);
-        startActivity(new Intent(MainActivity.this, NormalHomeActivity.class));
-    }
 
+    public class Handlers {
 
-    public class MyHandlers {
         public void onClickFriend(View view) {
             Log.v("-->", "onClickFriend");
+            mBean.setTitle("变身");
         }
 
         public void onClickEnemy(View view) {
             Log.v("-->", "onClickEnemy");
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

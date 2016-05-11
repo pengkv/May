@@ -37,17 +37,17 @@
             android:text="我的" />
     </RadioGroup>
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape_tv_middle" />
-
     <com.pengkv.may.widget.TabViewPager
         android:id="@+id/vp_tab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/rg_tab"
         android:layout_below="@+id/toolbar" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_tv_middle" />
 </RelativeLayout>

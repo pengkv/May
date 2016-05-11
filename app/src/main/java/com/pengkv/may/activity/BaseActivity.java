@@ -24,7 +24,6 @@ public class BaseActivity extends AppCompatActivity {
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);//状态栏变透明
         }
-        initToolbar();
 
         //获取当前页面的名字
         String contextString = this.toString();
@@ -33,7 +32,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //初始化标题栏
-    private void initToolbar() {
+    public void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -41,7 +40,6 @@ public class BaseActivity extends AppCompatActivity {
             TextView mTitleTV = (TextView) toolbar.findViewById(R.id.tv_bar_title);
             TextView mRightTV = (TextView) toolbar.findViewById(R.id.tv_bar_right);
         }
-
     }
 
     //简化view映射方法

@@ -1,5 +1,8 @@
 package com.pengkv.may.model.bean;
 
+import android.databinding.Bindable;
+
+import com.pengkv.may.BR;
 import com.pengkv.may.config.Basic;
 
 import java.util.List;
@@ -50,12 +53,14 @@ public class ImageDetailBean extends BaseBean {
         this.galleryclass = galleryclass;
     }
 
+    @Bindable
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+        notifyPropertyChanged(BR.title);
     }
 
     public String getImg() {

@@ -17,4 +17,10 @@ public class ImageBinder {
         Glide.with(context).load(url).into(imageView);
     }
 
+
+//    @BindingAdapter("bind:contentList")
+//    public static void setContentList(RecyclerView view, List<?> list) {
+//        MainAdapter adapter = (MainAdapter) view.getAdapter();
+//        adapter.addRows(list);
+//    }
 }

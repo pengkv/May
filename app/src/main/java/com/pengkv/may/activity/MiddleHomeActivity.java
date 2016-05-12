@@ -9,7 +9,6 @@ import com.pengkv.may.adapter.MainFragmentAdapter;
 import com.pengkv.may.fragment.AFragment;
 import com.pengkv.may.fragment.BFragment;
 import com.pengkv.may.fragment.CFragment;
-import com.pengkv.may.widget.CubeTransformer;
 import com.pengkv.may.widget.TabViewPager;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class MiddleHomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_narmal_home);
+        setContentView(R.layout.activity_middle_home);
 
         mViewPager = $(R.id.vp_tab);
         mRadioGroup = $(R.id.rg_tab);

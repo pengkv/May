@@ -1,24 +1,22 @@
 package com.pengkv.may.model.bean;
 
 
+import android.databinding.BaseObservable;
+
 import java.util.List;
 
 /**
  * 列表数据实体基类
- *
+ * <p>
  * Created by lyq on 2014/8/21.
  */
-public class ListModel<T> {
+public class ListModel<T> extends BaseObservable {
 
-    /**
-     * 数据实体列表
-     */
-    List<T> list;
+    private int mPageIndex = 1;//页码，默认1
+    private int mPageSize = 1;//一页取的条数
 
-    /**
-     * 总条数
-     */
-    private int total;
+    private List<T> list;//数据实体列表
+    private int total;//总条数
 
     public List<T> getList() {
         return list;

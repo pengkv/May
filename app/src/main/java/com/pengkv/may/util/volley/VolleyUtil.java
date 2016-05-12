@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.pengkv.may.activity.BaseActivity;
 import com.pengkv.may.model.param.BaseParam;
+import com.pengkv.may.util.NetworkUtil;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -24,26 +25,27 @@ public class VolleyUtil {
     public Context mContext;
     public ResultHandler mResultHandler;
 
-    public static VolleyUtil newInstance(Context context){
-        VolleyUtil volleyUtil=newInstance(context,0);
+    public static VolleyUtil newInstance(Context context) {
+        VolleyUtil volleyUtil = newInstance(context, 0);
         return volleyUtil;
     }
 
-public static VolleyUtil newInstance(Context context,int tag){
-    VolleyUtil volleyUtil=new VolleyUtil();
-    volleyUtil.mContext=context;
-    volleyUtil.mResultHandler=new ResultHandler(context);
-    volleyUtil.mResultHandler.mTag=tag;
-    return volleyUtil;
-}
+    public static VolleyUtil newInstance(Context context, int tag) {
+        VolleyUtil volleyUtil = new VolleyUtil();
+        volleyUtil.mContext = context;
+        volleyUtil.mResultHandler = new ResultHandler(context);
+        volleyUtil.mResultHandler.mTag = tag;
+        return volleyUtil;
+    }
 
-    public  void doPost(final String jsonUrl, final BaseParam paramStr, final Class<?> desClass){
-        // TODO: 2016/5/2 判断网络
+    public void doPost(final String jsonUrl, final BaseParam paramStr, final Class<?> desClass) {
+        if (!NetworkUtil.isNetworkConnected(mContext))
+            return;
 
-        final StringRequest stringRequest=new StringRequest(Request.Method.POST, jsonUrl, new Response.Listener<String>() {
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, jsonUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                mResultHandler.mTargetClass=desClass;
+                mResultHandler.mTargetClass = desClass;
                 mResultHandler.onSuccess(s);
             }
         }, new Response.ErrorListener() {
@@ -51,14 +53,14 @@ public static VolleyUtil newInstance(Context context,int tag){
             public void onErrorResponse(VolleyError volleyError) {
                 mResultHandler.onError(volleyError);
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 return Bean2Map(paramStr);
             }
         };
 
-        if (mContext instanceof BaseActivity){
+        if (mContext instanceof BaseActivity) {
             stringRequest.setTag(((Activity) mContext).getLocalClassName());
         }
 
@@ -66,12 +68,14 @@ public static VolleyUtil newInstance(Context context,int tag){
         VolleySingleton.getInstance().addToRequestQueue(stringRequest);
     }
 
-    public  void doGet(final String jsonUrl,final Class<?> desClass ){
-        // TODO: 2016/5/2 判断网络
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, "url", new Response.Listener<String>() {
+    public void doGet(final String jsonUrl, final Class<?> desClass) {
+        if (!NetworkUtil.isNetworkConnected(mContext))
+            return;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, jsonUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                mResultHandler.mTargetClass=desClass;
+                mResultHandler.mTargetClass = desClass;
                 mResultHandler.onSuccess(s);
             }
         }, new Response.ErrorListener() {
@@ -81,7 +85,7 @@ public static VolleyUtil newInstance(Context context,int tag){
             }
         });
 
-        if (mContext instanceof BaseActivity){
+        if (mContext instanceof BaseActivity) {
             stringRequest.setTag(((Activity) mContext).getLocalClassName());
         }
 

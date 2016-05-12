@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Administrator on 2016/5/11.
+ * 字符串处理工具类
  */
 public class StringUtil {
 

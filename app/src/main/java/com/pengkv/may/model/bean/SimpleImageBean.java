@@ -1,5 +1,7 @@
 package com.pengkv.may.model.bean;
 
+import com.pengkv.may.config.Basic;
+
 /**
  * Created by pro on 2016/4/30.
  */
@@ -34,7 +36,7 @@ public class SimpleImageBean extends BaseBean {
     }
 
     public String getSrc() {
-        return src;
+        return Basic.URL_BASE_IMAGE + src;
     }
 
     public void setSrc(String src) {

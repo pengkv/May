@@ -1,68 +1,64 @@
 package com.pengkv.may.activity;
 
-import android.databinding.DataBindingUtil;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pengkv.may.R;
-import com.pengkv.may.config.ApiClient;
-import com.pengkv.may.databinding.ActivityMainBinding;
-import com.pengkv.may.interfaces.IRequestHander;
-import com.pengkv.may.model.bean.ImageDetailBean;
-import com.pengkv.may.model.param.GetImageDetailParam;
-import com.pengkv.may.model.param.GetImageListParam;
 
-public class MainActivity extends BaseActivity implements IRequestHander {
+import java.util.Timer;
+import java.util.TimerTask;
 
+/**
+ * Created by Administrator on 2016/5/12.
+ */
+public class MainActivity extends BaseActivity {
 
-    private ActivityMainBinding binding;
-    private ImageDetailBean mBean;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setHandler(new Handlers());
+        setSupportActionBar((Toolbar) $(R.id.toolbar));
 
-        initToolbar(binding.bar.toolbar, "图片详情");
-
-        fetchData(TAG_B);
-
+        textView = $(R.id.tv_main);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ImageListActivity.class));
+            }
+        });
     }
 
 
     @Override
-    public void fetchData(int tag) {
-        if (tag == TAG_A) {
-            GetImageListParam param = new GetImageListParam("1", "10", "1");
-            ApiClient.getImageList(this, param, tag);
-        } else if (tag == TAG_B) {
-            GetImageDetailParam param = new GetImageDetailParam("711");
-            ApiClient.getImageDetail(this, param, tag);
-        }
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            exit();
+        return false;
     }
 
-    @Override
-    public void updateUI(Object response, int tag) {
-        Log.v("-->", response.toString());
-        mBean = (ImageDetailBean) response;
-        binding.setImage(mBean);
-    }
+    private static boolean isExit;
 
-
-    public class Handlers {
-
-        public void onClickFriend(View view) {
-            Log.v("-->", "onClickFriend");
-            mBean.setTitle("变身");
-        }
-
-        public void onClickEnemy(View view) {
-            Log.v("-->", "onClickEnemy");
+    private void exit() {
+        if (isExit) {
+            finish();
+            System.exit(0);
+        } else {
+            isExit = true;
+            Toast.makeText(this, getResources().getString(R.string.app_exit), Toast.LENGTH_SHORT).show();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false;
+                }
+            }, 2000);
         }
     }
-
 }

@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 
 /**
  * Created by Administrator on 2016/5/10.
- * 禁止滑动的ViewPager
+ * 不能滑动的ViewPager
  */
 public class TabViewPager extends ViewPager {
     public TabViewPager(Context context) {

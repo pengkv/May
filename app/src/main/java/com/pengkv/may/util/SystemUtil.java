@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 /**
  * Created by Liam on 2014/12/24.
+ * 系统工具类
  */
 public class SystemUtil {
 

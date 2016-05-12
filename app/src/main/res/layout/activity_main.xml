@@ -1,49 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <data>
+    <include layout="@layout/view_toolbar" />
 
-        <variable
-            name="image"
-            type="com.pengkv.may.model.bean.ImageDetailBean" />
-
-        <variable
-            name="handler"
-            type="com.pengkv.may.activity.MainActivity.Handlers" />
-    </data>
-
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <TextView
+        android:id="@+id/tv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".activity.MainActivity">
+        android:gravity="center"
+        android:text="Dump" />
 
-        <include
-            android:id="@+id/bar"
-            layout="@layout/view_toolbar" />
-
-        <ImageView
-            android:id="@+id/iv_img"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:imageUrl="@{image.img}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:onClick="@{handler.onClickFriend}"
-            android:text="@{String.valueOf(image.id)}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:onClick="@{handler.onClickEnemy}"
-            android:text="@{image.title}"
-            tools:text="编号" />
-
-    </LinearLayout>
-
-</layout>
+</LinearLayout>

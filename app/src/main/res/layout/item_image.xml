@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <ImageView
-        android:id="@+id/iv_img"
+        <variable
+            name="image"
+            type="com.pengkv.may.model.bean.SingleImageBean" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_img_num"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="编号：178" />
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            app:imageUrl="@{image.img}" />
 
-    <TextView
-        android:id="@+id/tv_img_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="夏日的清新" />
+        <TextView
+            android:id="@+id/tv_img_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(image.id)}"
+            tools:text="编号：178" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_img_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{image.title}"
+            tools:text="夏日的清新" />
+
+    </LinearLayout>
+</layout>

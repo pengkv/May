@@ -5,6 +5,10 @@ package com.pengkv.may.util;
 
 import android.content.Context;
 
+/**
+ * Created by pengkv on 2016/5/14.
+ * 系统工具类
+ */
 public class UnitUtil {
 
 

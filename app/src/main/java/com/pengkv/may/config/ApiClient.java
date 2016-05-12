@@ -15,14 +15,13 @@ import com.pengkv.may.util.volley.VolleyUtil;
 public class ApiClient extends ApiBaseClient {
 
 
-    public static void getImageList(Context context, GetImageListParam param,int tag){
-        VolleyUtil.newInstance(context,tag).doPost(Basic.URL_LIST,param, SingleImageBean.class);
+    public static void getImageList(Context context, GetImageListParam param, int tag) {
+        VolleyUtil.newInstance(context, tag).doPost(Basic.URL_LIST, param, SingleImageBean.class);
     }
 
-    public static void getImageDetail(Context context, GetImageDetailParam param, int tag){
-        VolleyUtil.newInstance(context,tag).doPost(Basic.URL_DETAIL,param, ImageDetailBean.class);
+    public static void getImageDetail(Context context, GetImageDetailParam param, int tag) {
+        VolleyUtil.newInstance(context, tag).doPost(Basic.URL_DETAIL, param, ImageDetailBean.class);
     }
-
 
 
     public static String getJsonStr(Object param) {

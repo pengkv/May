@@ -1,18 +1,20 @@
 package com.pengkv.may.model.bean;
 
+import com.pengkv.may.config.Basic;
+
 /**
  * Created by pro on 2016/4/30.
  */
 public class SingleImageBean extends BaseBean {
     private int id;
-    private int  galleryclass ;//          图片分类
-    private String title     ;//          标题
-    private String img     ;//          图库封面
-    private int count     ;//          访问数
-    private int rcount     ;//           回复数
-    private int fcount     ;//          收藏数
-    private int size     ;//      图片多少张
-    private String time ;
+    private int galleryclass;//          图片分类
+    private String title;//          标题
+    private String img;//          图库封面
+    private int count;//          访问数
+    private int rcount;//           回复数
+    private int fcount;//          收藏数
+    private int size;//      图片多少张
+    private String time;
 
     public SingleImageBean() {
     }
@@ -62,7 +64,7 @@ public class SingleImageBean extends BaseBean {
     }
 
     public String getImg() {
-        return img;
+        return Basic.URL_BASE_IMAGE + img;
     }
 
     public void setImg(String img) {

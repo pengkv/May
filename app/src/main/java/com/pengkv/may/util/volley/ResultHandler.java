@@ -37,7 +37,8 @@ public class ResultHandler {
         } catch (JSONException e) {
         }
     }
-    public void onSuccess(JSONObject response){
+
+    public void onSuccess(JSONObject response) {
 
         Object obj = null;
 
@@ -90,17 +91,17 @@ public class ResultHandler {
             }
         }
 
-        if (mContext instanceof IRequestHander){
-            IRequestHander iRequestHander=(IRequestHander)mContext;
-            iRequestHander.updateUI(obj,mTag);
+        if (mContext instanceof IRequestHander) {
+            IRequestHander iRequestHander = (IRequestHander) mContext;
+            iRequestHander.updateUI(obj, mTag);
         }
 
     }
 
-    public void onError(VolleyError error){
-        if (mContext instanceof IRequestHander){
-            IRequestHander iRequestHander=(IRequestHander)mContext;
-            iRequestHander.updateUI(null,mTag);
+    public void onError(VolleyError error) {
+        if (mContext instanceof IRequestHander) {
+            IRequestHander iRequestHander = (IRequestHander) mContext;
+            iRequestHander.updateUI(null, mTag);
         }
     }
 }

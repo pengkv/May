@@ -13,16 +13,21 @@ import com.pengkv.may.config.MayApplication;
 public class VolleySingleton {
     public static final String TAG = "VolleySingleton";
 
-    private static VolleySingleton INSTANCE;
+    private volatile static VolleySingleton INSTANCE;
     private RequestQueue mRequestQueue;
 
-    private VolleySingleton(){
-        mRequestQueue= Volley.newRequestQueue(MayApplication.getAppContext());
+    private VolleySingleton() {
+        mRequestQueue = Volley.newRequestQueue(MayApplication.getAppContext());
     }
 
-    public static synchronized VolleySingleton getInstance(){
-        if (INSTANCE==null)
-            INSTANCE=new VolleySingleton();
+    public static synchronized VolleySingleton getInstance() {
+        if (INSTANCE == null) {
+            synchronized (VolleySingleton.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new VolleySingleton();
+                }
+            }
+        }
         return INSTANCE;
     }
 
@@ -36,13 +41,13 @@ public class VolleySingleton {
         getRequestQueue().add(req);
     }
 
-     //添加请求到队列(默认Tag)
+    //添加请求到队列(默认Tag)
     public <T> void addToRequestQueue(Request<T> req) {
         req.setTag(TAG);
         getRequestQueue().add(req);
     }
 
-   //取消所有请求
+    //取消所有请求
     public void cancelPendingRequests(Object tag) {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);

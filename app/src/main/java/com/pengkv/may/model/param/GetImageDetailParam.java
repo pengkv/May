@@ -4,7 +4,7 @@ package com.pengkv.may.model.param;
  * Created by pro on 2016/4/30.
  */
 public class GetImageDetailParam extends BaseParam {
-  private String  id	;//	图库的id
+    private String id;//	图库的id
 
     public GetImageDetailParam(String id) {
         this.id = id;

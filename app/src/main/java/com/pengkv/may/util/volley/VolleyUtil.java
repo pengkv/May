@@ -103,11 +103,13 @@ public class VolleyUtil {
                     String field = method.getName();
                     field = field.substring(field.indexOf("get") + 3);
                     field = field.toLowerCase().charAt(0) + field.substring(1);
-                    Object value = method.invoke(javaBean, (Object[]) null);
+                    //Object value = method.invoke(javaBean, (Object[]) null);
+                    String value = String.valueOf(method.invoke(javaBean, (Object[]) null));
                     map.put((K) field, (V) (null == value ? "" : value));
                 }
             }
         } catch (Exception e) {
+            throw new ClassCastException("注意: 参数转化错误！");
         }
         return map;
     }

@@ -7,10 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -84,24 +82,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-
-        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
-        if (layoutManager instanceof GridLayoutManager)
-            spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
-
-
-//
-        if (isLastRaw(itemPosition, spanCount, childCount))// 如果是最后一行，则不需要绘制底部
-//        {
-//            outRect.set(0, 0, 0, 0);
-//        } else if (isLastColum(itemPosition, spanCount))// 如果是最后一列，则不需要绘制右边
-//        {
-//            outRect.set(0, 0, 0, 0);
-//        } else {
-//            outRect.set(0, 0, 0, mDividerHeight);
-//        }
-//        Log.v("-->r", "getItemOffsets");
-        outRect.set(0, 0, 0, mDividerHeight);
+        outRect.set(0, 0, mDividerHeight, mDividerHeight);
     }
 
     //绘制分割线
@@ -109,9 +90,9 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDraw(c, parent, state);
 //        if (mOrientation == LinearLayoutManager.VERTICAL) {
-//        drawVertical(c, parent);
+            drawVertical(c, parent);
 //        } else {
-        drawHorizontal(c, parent);
+            drawHorizontal(c, parent);
 //        }
     }
 
@@ -125,16 +106,6 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + layoutParams.bottomMargin;
             final int bottom = top + mDividerHeight;
-
-
-            itemPosition = i;
-            childCount = childSize;
-
-            if (isLastRaw(i, spanCount, childSize))
-                return;
-//            if (isLastColum(i, spanCount))
-//                return;
-
             if (mDivider != null) {
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(canvas);
@@ -155,16 +126,6 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + layoutParams.rightMargin;
             final int right = left + mDividerHeight;
-
-//            if (isLastRaw(i, spanCount, childSize))
-//                return;
-
-            if (isLastColum(i, spanCount))
-                return;
-
-            itemPosition = i;
-            childCount = childSize;
-
             if (mDivider != null) {
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(canvas);
@@ -173,23 +134,6 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
                 canvas.drawRect(left, top, right, bottom, mPaint);
             }
         }
-    }
-
-    private boolean isLastColum(int pos, int spanCount) {
-        Log.v("-->c", (pos + 1) % spanCount + "");
-        if ((pos + 1) % spanCount == 0) // 如果是最后一列，则不需要绘制右边
-            return true;
-        return false;
-    }
-
-    private boolean isLastRaw(int pos, int spanCount, int childCount) {
-//        childCount = childCount - childCount % spanCount;
-//        if (pos >= childCount)// 如果是最后一行，则不需要绘制底部
-        Log.v("-->r", childCount + "/" + pos + "/" + spanCount);
-//        if (childCount - pos < spanCount)
-        if (pos == 8 || pos == 9)
-            return true;
-        return false;
     }
 
 }

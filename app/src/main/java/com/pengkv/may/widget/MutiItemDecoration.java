@@ -30,17 +30,23 @@ public class MutiItemDecoration extends RecyclerView.ItemDecoration {
 
         switch (type) {
             case ALL:
-                if (itemPosition % spanCount == 0) {
+                if (itemPosition % spanCount == 0) {//第一列
                     if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
                         outRect.set(0, 0, dividerSize / 2, 0);
                     } else {
                         outRect.set(0, 0, dividerSize / 2, dividerSize);
                     }
-                } else {
+                } else if (itemPosition % spanCount == spanCount - 1) {//最后一列
                     if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
                         outRect.set(dividerSize / 2, 0, 0, 0);
                     } else {
                         outRect.set(dividerSize / 2, 0, 0, dividerSize);
+                    }
+                } else {//中间列
+                    if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
+                        outRect.set(dividerSize / 2, 0, dividerSize / 2, 0);
+                    } else {
+                        outRect.set(dividerSize / 2, 0, dividerSize / 2, dividerSize);
                     }
                 }
                 break;

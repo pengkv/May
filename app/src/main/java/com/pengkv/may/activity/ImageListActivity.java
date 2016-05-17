@@ -14,7 +14,7 @@ import com.pengkv.may.interfaces.OnScrollBottomListener;
 import com.pengkv.may.model.bean.ListModel;
 import com.pengkv.may.model.bean.SingleImageBean;
 import com.pengkv.may.model.param.GetImageListParam;
-import com.pengkv.may.widget.MutiItemDecoration;
+import com.pengkv.may.widget.SpacesItemDecoration;
 
 /**
  * Created by Administrator on 2016/5/12.
@@ -33,10 +33,9 @@ public class ImageListActivity extends BaseActivity implements IRequestHander {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_list);
         final GridLayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         binding.rvData.setLayoutManager(mLayoutManager);
-//        binding.rvData.addItemDecoration(new DividerItemDecoration(this, LinearLayout.HORIZONTAL, 20, ContextCompat.getColor(this, R.color.gray_light)));
-//        binding.rvData.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL, 20, ContextCompat.getColor(this, R.color.gray_light)));
 //        binding.rvData.addItemDecoration(new DividerGridItemDecoration(this));
-        binding.rvData.addItemDecoration(new MutiItemDecoration(MutiItemDecoration.Type.ALL, 10));
+//        binding.rvData.addItemDecoration(new MutiItemDecoration(MutiItemDecoration.Type.ALL, 10));
+        binding.rvData.addItemDecoration(new SpacesItemDecoration(30));
 
         mAdapter = new ImageListAdapter(ImageListActivity.this, mList.getList());
         binding.rvData.setAdapter(mAdapter);

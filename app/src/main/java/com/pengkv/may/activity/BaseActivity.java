@@ -38,16 +38,13 @@ public class BaseActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             TextView mLeftTV = (TextView) toolbar.findViewById(R.id.tv_bar_left);
             TextView mTitleTV = (TextView) toolbar.findViewById(R.id.tv_bar_title);
-
             mLeftTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     finish();
                 }
             });
-
             mTitleTV.setText(title);
-
         }
     }
 

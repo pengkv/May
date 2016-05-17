@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".activity.ImageDetailActivity">
 
-    <include layout="@layout/view_toolbar" />
+    <!--<include layout="@layout/view_toolbar" />-->
 
     <FrameLayout
         android:id="@+id/fl_fragment"
@@ -26,6 +26,7 @@
         <RadioButton
             android:id="@+id/rb_a"
             style="@style/MainRadioButton"
+            android:checked="true"
             android:drawableTop="@drawable/selector_a"
             android:text="首页" />
 

@@ -33,9 +33,7 @@ public class ImageListActivity extends BaseActivity implements IRequestHander {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_list);
         final GridLayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         binding.rvData.setLayoutManager(mLayoutManager);
-//        binding.rvData.addItemDecoration(new DividerGridItemDecoration(this));
-//        binding.rvData.addItemDecoration(new MutiItemDecoration(MutiItemDecoration.Type.ALL, 10));
-        binding.rvData.addItemDecoration(new SpacesItemDecoration(30));
+        binding.rvData.addItemDecoration(new SpacesItemDecoration(10));
 
         mAdapter = new ImageListAdapter(ImageListActivity.this, mList.getList());
         binding.rvData.setAdapter(mAdapter);

@@ -5,6 +5,8 @@
     android:background="#1c4d56"
     android:orientation="vertical">
 
+    <include layout="@layout/view_toolbar" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

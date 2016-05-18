@@ -31,8 +31,9 @@ public class NormalHomeActivity extends BaseActivity {
 
         mRadioGroup = $(R.id.rg_tab);
 
+        aFragment = new AFragment();
         mManager = getSupportFragmentManager();
-        mManager.beginTransaction().add(R.id.fl_fragment, new AFragment()).commit();
+        mManager.beginTransaction().add(R.id.fl_fragment, aFragment).commit();
 
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {//设置点击事件
             @Override

@@ -105,7 +105,6 @@ public class CacheActivity extends BaseActivity implements View.OnClickListener 
             e.printStackTrace();
         }
 
-
     }
 
     @Override

@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.pengkv.may.R;
+import com.pengkv.may.config.EventType;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by pro on 2016/4/30.
@@ -24,6 +28,8 @@ public class BaseFragment extends Fragment {
 
         String contextString = this.toString();
         Log.v("FragmentName", contextString.substring(0, contextString.lastIndexOf("{")));
+
+        EventBus.getDefault().register(this);
     }
 
     //初始化主页标题栏
@@ -39,5 +45,15 @@ public class BaseFragment extends Fragment {
 
     public <T> T $(int viewID) {
         return (T) view.findViewById(viewID);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onMainEventBus(EventType eventType) {
     }
 }

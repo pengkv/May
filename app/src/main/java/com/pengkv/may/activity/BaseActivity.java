@@ -10,6 +10,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.pengkv.may.R;
+import com.pengkv.may.config.EventType;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by pro on 2016/4/30.
@@ -30,6 +34,7 @@ public class BaseActivity extends AppCompatActivity {
         String contextString = this.toString();
         Log.v("ActivityName", contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@")));
 
+        EventBus.getDefault().register(this);
     }
 
     //初始化标题栏
@@ -75,4 +80,14 @@ public class BaseActivity extends AppCompatActivity {
         return (T) findViewById(viewID);
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onMainEventBus(EventType eventType) {
+    }
 }

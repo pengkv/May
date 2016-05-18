@@ -2,6 +2,7 @@ package com.pengkv.may.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -69,4 +70,10 @@ public class SystemUtil {
         return metric.heightPixels;  // 屏幕高度（像素）
     }
 
+    /**
+     * 获取屏幕密度
+     */
+    public static int getDisplayDensity() {
+        return (int) Resources.getSystem().getDisplayMetrics().density;
+    }
 }

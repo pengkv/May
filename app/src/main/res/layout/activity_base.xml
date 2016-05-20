@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout>
 
-    <include layout="@layout/view_toolbar" />
 
-</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <!--通用标题栏http://stormzhang.com/android/2015/08/16/boohee-toolbar/-->
+        <include layout="@layout/view_toolbar" />
+
+    </LinearLayout>
+</layout><!--通用标题栏http://stormzhang.com/android/2015/08/16/boohee-toolbar/-->

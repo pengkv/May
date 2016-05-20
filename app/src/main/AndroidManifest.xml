@@ -42,6 +42,7 @@
         <activity android:name=".activity.ImageListActivity" />
         <activity android:name=".activity.ImageDetailActivity" />
         <activity android:name=".activity.NormalHomeActivity" />
+        <activity android:name=".activity.RetrofitActivity" />
     </application>
 
 </manifest>

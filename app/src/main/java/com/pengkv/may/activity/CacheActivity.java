@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,18 +21,20 @@ import java.util.concurrent.FutureTask;
 
 /**
  * Created by Administrator on 2016/5/16.
+ * 图片缓存页面
  */
 public class CacheActivity extends BaseActivity implements View.OnClickListener {
 
     private Handler handler;
-    ImageView imageView;
-    ImageCacheUitl imageCacheUitl;
+    private ImageView imageView;
+    private ImageCacheUitl imageCacheUitl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reference);
 
+        initToolbar((Toolbar) $(R.id.toolbar), "Friday");
         imageView = $(R.id.iv_img);
 
         handler = new Handler() {

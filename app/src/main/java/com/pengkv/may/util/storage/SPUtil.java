@@ -16,7 +16,7 @@ public class SPUtil {
 
     public static String getString(Context ctx, String key) {
         SharedPreferences sp = ctx.getSharedPreferences(ProjectName, Context.MODE_PRIVATE);
-        return sp == null ? sp.getString(key, " ") : " ";
+        return sp == null ? " " : sp.getString(key, " ");
     }
 
     public static void putBoolean(Context ctx, String key, boolean value) {
@@ -25,7 +25,7 @@ public class SPUtil {
 
     public static boolean getBoolean(Context ctx, String key) {
         SharedPreferences sp = ctx.getSharedPreferences(ProjectName, Context.MODE_PRIVATE);
-        return sp == null ? sp.getBoolean(key, false) : false;
+        return sp == null ? false : sp.getBoolean(key, false);
     }
 
     public static void putInt(Context ctx, String key, int value) {
@@ -34,7 +34,7 @@ public class SPUtil {
 
     public static int getInt(Context ctx, String key) {
         SharedPreferences sp = ctx.getSharedPreferences(ProjectName, Context.MODE_PRIVATE);
-        return sp == null ? sp.getInt(key, -1) : -1;
+        return sp == null ? -1 : sp.getInt(key, -1);
     }
 
     public static void putFloat(Context ctx, String key, float value) {
@@ -43,7 +43,7 @@ public class SPUtil {
 
     public static float getFloat(Context ctx, String key) {
         SharedPreferences sp = ctx.getSharedPreferences(ProjectName, Context.MODE_PRIVATE);
-        return sp == null ? sp.getFloat(key, -1) : -1;
+        return sp == null ? -1 : sp.getFloat(key, -1);
     }
 
     public static void putLong(Context ctx, String key, long value) {
@@ -52,7 +52,7 @@ public class SPUtil {
 
     public static long getLong(Context ctx, String key) {
         SharedPreferences sp = ctx.getSharedPreferences(ProjectName, Context.MODE_PRIVATE);
-        return sp == null ? sp.getLong(key, -1) : -1;
+        return sp == null ? -1 : sp.getLong(key, -1);
     }
 
     //清除单个键值

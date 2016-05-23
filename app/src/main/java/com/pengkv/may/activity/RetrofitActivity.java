@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.pengkv.may.R;
 import com.pengkv.may.interfaces.RequestService;
-import com.pengkv.may.model.bean.PhoneBean;
+import com.pengkv.may.model.bean.SingleImageBean;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,11 +15,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Administrator on 2016/5/20.
+ * https://segmentfault.com/a/1190000004536439
  */
 public class RetrofitActivity extends BaseActivity {
 
-    private static final String BASE_URL = "http://apis.baidu.com";
-    private static final String API_KEY = "8e13586b86e4b7f3758ba3bd6c9c9135";
+    private static final String BASE_URL = "http://www.tngou.net/tnfs/api/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,24 +39,23 @@ public class RetrofitActivity extends BaseActivity {
 
         //2.创建访问API的请求
         RequestService service = retrofit.create(RequestService.class);
-        Call<PhoneBean> call = service.getResult(API_KEY, "18868944725");
+        Call<SingleImageBean> call = service.getImage("171");
 
         //3.发送请求
-        call.enqueue(new Callback<PhoneBean>() {
+        call.enqueue(new Callback<SingleImageBean>() {
             @Override
-            public void onResponse(Call<PhoneBean> call, Response<PhoneBean> response) {
+            public void onResponse(Call<SingleImageBean> call, Response<SingleImageBean> response) {
                 //4.处理结果
                 if (response.isSuccess()) {
-                    PhoneBean result = response.body();
+                    SingleImageBean result = response.body();
                     if (result != null) {
-                        PhoneBean.RetDataEntity entity = result.getRetData();
-                        Log.v("-->", entity.getCity());
+                        Log.v("-->", result.toString());
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<PhoneBean> call, Throwable t) {
+            public void onFailure(Call<SingleImageBean> call, Throwable t) {
 
             }
         });

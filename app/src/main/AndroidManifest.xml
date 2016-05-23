@@ -43,6 +43,7 @@
         <activity android:name=".activity.ImageDetailActivity" />
         <activity android:name=".activity.NormalHomeActivity" />
         <activity android:name=".activity.RetrofitActivity" />
+        <activity android:name=".activity.RxJavaActivity" />
     </application>
 
 </manifest>

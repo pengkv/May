@@ -3,6 +3,7 @@ package com.pengkv.may.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -71,9 +72,31 @@ public class SystemUtil {
     }
 
     /**
-     * 获取屏幕密度
+     * 获取屏幕密度(简洁)
      */
     public static int getDisplayDensity() {
         return (int) Resources.getSystem().getDisplayMetrics().density;
+    }
+
+    /**
+     * 获取状态栏高度
+     */
+    private static int getStatusHeight(Context context) {
+        int statusHeight = 0;
+        Rect localRect = new Rect();
+        ((Activity) context).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+        statusHeight = localRect.top;
+        if (0 == statusHeight) {
+            Class<?> localClass;
+            try {
+                localClass = Class.forName("com.android.internal.R$dimen");
+                Object localObject = localClass.newInstance();
+                int i5 = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
+                statusHeight = context.getResources().getDimensionPixelSize(i5);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return statusHeight;
     }
 }

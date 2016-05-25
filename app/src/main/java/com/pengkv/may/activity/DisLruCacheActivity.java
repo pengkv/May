@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 
@@ -49,15 +50,11 @@ public class DisLruCacheActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
 
+        initToolbar((Toolbar) $(R.id.toolbar), "DragView");
 
-        dragVeiw = $(R.id.view_drag);
+        dragVeiw = (DragGridVeiw) findViewById(R.id.view_drag);
         for (int i = 0; i < 8; i++) {
             HashMap<String, Object> itemHashMap = new HashMap<>();
-            if (i < 4) {
-                itemHashMap.put("item_image", R.drawable.sample_1);
-            } else {
-                itemHashMap.put("item_image", R.drawable.sample_2);
-            }
             itemHashMap.put("item_image", R.drawable.sample_1);
             itemHashMap.put("item_text", "拖拽 " + Integer.toString(i));
             dataSourceList.add(itemHashMap);

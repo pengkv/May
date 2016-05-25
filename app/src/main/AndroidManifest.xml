@@ -47,6 +47,7 @@
         <activity android:name=".activity.RetrofitActivity" />
         <activity android:name=".activity.RxJavaActivity" />
         <activity android:name=".activity.DisLruCacheActivity" />
+        <activity android:name=".activity.CustomViewAcyivity" />
     </application>
 
 </manifest>

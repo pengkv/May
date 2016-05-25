@@ -18,34 +18,35 @@ import android.widget.ImageView;
 
 /**
  * Created by Administrator on 2016/5/24.
+ * 可以拖动的GridView
  */
 public class DragGridVeiw extends GridView {
 
-    private final int PRESS_TIME = 1000;
+    private final int PRESS_TIME = 1000;//长按时间
 
-    private int mDownX;
-    private int mDownY;
-    private int mMoveX;
-    private int mMoveY;
+    private int mDownX;//触碰时的X坐标
+    private int mDownY;//触碰时的Y坐标
+    private int mMoveX;//移动时的X坐标
+    private int mMoveY;//移动时的Y坐标
 
     private int mOffset2Top;//DragGridView距离屏幕顶部的偏移量
     private int mOffset2Left;//DragGridView距离屏幕左边的偏移量
-    private int mPointToItemTop;
-    private int mPointToItemLeft;
-    private int mStatusHeight;
+    private int mPointToItemTop;//触碰点距离ItemView的上边距
+    private int mPointToItemLeft;//触碰点距离ItemView的左边距
+    private int mStatusHeight;//状态栏高度
 
-    private boolean isDraging;
+    private boolean isDraging;//是否正在拖曳
 
-    private Bitmap mBitmap;
-    private int mTouchPostiion;
-    private View mTouchItemView;
+    private Bitmap mBitmap;//ItemView的图片
+    private int mTouchPostiion;//触碰的位置
+    private View mTouchItemView;//触碰的ItemView
 
-    private Vibrator mVibrator;
-    private ImageView mDragImageView;
-    private WindowManager mWindowManager;
-    private WindowManager.LayoutParams mWindowLayoutParams;
+    private Vibrator mVibrator;//震动器
+    private ImageView mDragImageView;//拖曳的View
+    private WindowManager mWindowManager;//窗口管理器
+    private WindowManager.LayoutParams mWindowLayoutParams;//窗口管理器布局
 
-    private OnChanageListener onChanageListener;
+    private OnChanageListener onChanageListener;//交换事件监听器
 
     private Handler mHandler = new Handler();
 
@@ -105,7 +106,12 @@ public class DragGridVeiw extends GridView {
                 int moveX = (int) ev.getX();
                 int moveY = (int) ev.getY();
 
-                //如果我们在按下的item上面移动，只要不超过item的边界我们就不移除mRunnable
+                //拖曳点超出GridView区域则取消拖曳事件
+                if (ev.getY() > getHeight() || ev.getY() < 0) {
+                    onStopDrag();
+                }
+
+                //如果我们在按下的item上面移动，只要超过item的边界就移除mRunnable
                 if (!isTouchInItem(mTouchItemView, moveX, moveY)) {
                     mHandler.removeCallbacks(mLongClickRunnable);
                 }
@@ -129,7 +135,7 @@ public class DragGridVeiw extends GridView {
                     break;
                 case MotionEvent.ACTION_UP:
                     onStopDrag();
-                    isDraging = false;
+
                     break;
             }
             return true;
@@ -219,6 +225,7 @@ public class DragGridVeiw extends GridView {
 
     //停止拖拽我们将之前隐藏的item显示出来，并将DragView移除
     private void onStopDrag() {
+        isDraging = false;
         getChildAt(mTouchPostiion - getFirstVisiblePosition()).setVisibility(View.VISIBLE);
         removeDragView();
     }

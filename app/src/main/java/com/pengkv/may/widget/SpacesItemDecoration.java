@@ -5,6 +5,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+/**
+ * Created by Administrator on 2016/5/10.
+ * RecycleView分割线
+ */
 public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
     private int mSpace;

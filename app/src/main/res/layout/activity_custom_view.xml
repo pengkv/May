@@ -7,9 +7,15 @@
     <include layout="@layout/view_toolbar" />
 
 
+    <com.pengkv.may.widget.ScrollBanner
+        android:id="@+id/view_banner"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
     <com.pengkv.may.widget.DragLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="100dp"

@@ -7,10 +7,23 @@
     <include layout="@layout/view_toolbar" />
 
 
+    <ListView
+        android:id="@+id/view_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.pengkv.may.widget.ScrollBanner
         android:id="@+id/view_banner"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:visibility="gone" />
 
     <com.pengkv.may.widget.DragLayout
         android:layout_width="match_parent"

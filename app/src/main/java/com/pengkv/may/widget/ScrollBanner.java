@@ -54,29 +54,25 @@ public class ScrollBanner extends LinearLayout {
                     position = 0;
 
                 if (isShow) {
-                    mBannerTV1.setText("A" + list.get(position++));
+                    mBannerTV1.setText(list.get(position++));
                 } else {
-                    mBannerTV2.setText("B" + list.get(position++));
+                    mBannerTV2.setText(list.get(position++));
                 }
 
                 startY1 = isShow ? 0 : offsetY;
                 endY1 = isShow ? -offsetY : 0;
 
-                ObjectAnimator animation = ObjectAnimator.ofFloat(mBannerTV1, "translationY", startY1, endY1);
-                animation.setDuration(300);
-                animation.start();
+
+                ObjectAnimator.ofFloat(mBannerTV1, "translationY", startY1, endY1).setDuration(300).start();
 
                 startY2 = isShow ? offsetY : 0;
                 endY2 = isShow ? 0 : -offsetY;
+                ObjectAnimator.ofFloat(mBannerTV2, "translationY", startY2, endY2).setDuration(300).start();
 
-                ObjectAnimator animation2 = ObjectAnimator.ofFloat(mBannerTV2, "translationY", startY2, endY2);
-                animation2.setDuration(300);
-                animation2.start();
                 handler.postDelayed(runnable, 3000);
             }
-        }
+        };
 
-        ;
     }
 
 

@@ -81,7 +81,7 @@ public class SystemUtil {
     /**
      * 获取状态栏高度
      */
-    private static int getStatusHeight(Context context) {
+    public static int getStatusHeight(Context context) {
         int statusHeight = 0;
         Rect localRect = new Rect();
         ((Activity) context).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);

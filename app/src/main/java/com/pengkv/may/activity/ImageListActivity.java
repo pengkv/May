@@ -6,7 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 
 import com.pengkv.may.R;
-import com.pengkv.may.adapter.ImageListAdapter;
+import com.pengkv.may.adapter.MyAdapter;
 import com.pengkv.may.config.ApiClient;
 import com.pengkv.may.databinding.ActivityImageListBinding;
 import com.pengkv.may.interfaces.IRequestHander;
@@ -24,7 +24,7 @@ public class ImageListActivity extends BaseActivity implements IRequestHander {
 
     private ListModel<SingleImageBean> mList = new ListModel<>();
     private ActivityImageListBinding binding;
-    private ImageListAdapter mAdapter;
+    private MyAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class ImageListActivity extends BaseActivity implements IRequestHander {
         binding.rvData.setLayoutManager(mLayoutManager);
         binding.rvData.addItemDecoration(new SpacesItemDecoration(10));
 
-        mAdapter = new ImageListAdapter(ImageListActivity.this, mList.getList());
+        mAdapter = new MyAdapter(ImageListActivity.this, mList.getList());
         binding.rvData.setAdapter(mAdapter);
 
         binding.rvData.addOnScrollListener(new OnScrollBottomListener(mAdapter, mLayoutManager, new OnScrollBottomListener.onBottomListener() {

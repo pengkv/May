@@ -18,6 +18,6 @@ public interface RequestService {
 
     //rxjava+retrofit请求
     @GET("show")
-    Observable<SingleImageBean> getSingleImage(@Query("id") String id);
+    Observable<Object> getSingleImage(@Query("id") String id);
 
 }

@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.Subscribe;
 /**
  * Created by pro on 2016/4/30.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

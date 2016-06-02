@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2016/5/26.
+ * 当行滚动广告
  */
 public class ScrollBanner extends LinearLayout {
 

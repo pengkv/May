@@ -8,6 +8,14 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
+    <color name="oragnge_deeep">#F03300</color>
+    <color name="oragnge_stand">#F07700</color>
+    <color name="oragnge_light">#F0BB00</color>
+
+    <color name="green_deep">#11A000</color>
+    <color name="green_stand">#449955</color>
+    <color name="green_light">#00E090</color>
+
     <color name="gray_light">#BBBBBB</color>
     <color name="gray_normal">#999999</color>
     <color name="gray_dark">#666666</color>

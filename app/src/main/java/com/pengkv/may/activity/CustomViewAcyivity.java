@@ -8,12 +8,16 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.pengkv.may.R;
 import com.pengkv.may.util.SystemUtil;
@@ -39,11 +43,65 @@ public class CustomViewAcyivity extends BaseActivity {
     TextView mTv;
     boolean isShowing;//是否正在显示
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
 
+
+        //------------------------------滚动----------------------------------------------
+        ViewFlipper flipper = $(R.id.view_flipper);
+        Animation rInAnim = AnimationUtils.loadAnimation(this, R.anim.fliper_in);
+        Animation rOutAnim = AnimationUtils.loadAnimation(this, R.anim.fliper_out);
+        flipper.setInAnimation(rInAnim);
+        flipper.setOutAnimation(rOutAnim);
+        for (int i = 0; i < 3; i++) {          // 添加图片源
+            TextView tv = new TextView(this);
+            tv.setText(i + "版");
+            tv.setGravity(Gravity.CENTER);
+
+            switch (i) {
+                case 0:
+                    tv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.oragnge_deeep, null));
+                    break;
+                case 1:
+                    tv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.oragnge_stand, null));
+                    break;
+                case 2:
+                    tv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.oragnge_light, null));
+                    break;
+            }
+            flipper.addView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        }
+
+
+        ViewFlipper flipper2 = $(R.id.view_flipper2);
+        Animation rInAnim2 = AnimationUtils.loadAnimation(this, R.anim.fliper_in2);
+        Animation rOutAnim2 = AnimationUtils.loadAnimation(this, R.anim.fliper_out2);
+        flipper2.setInAnimation(rInAnim2);
+        flipper2.setOutAnimation(rOutAnim2);
+        for (int i = 0; i < 3; i++) {          // 添加图片源
+            TextView tv = new TextView(this);
+            tv.setText(i + "版");
+            tv.setGravity(Gravity.CENTER);
+
+            switch (i) {
+                case 0:
+                    tv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green_deep, null));
+                    break;
+                case 1:
+                    tv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green_stand, null));
+                    break;
+                case 2:
+                    tv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green_light, null));
+                    break;
+            }
+            flipper2.addView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        }
+
+
+        //------------------------------悬停----------------------------------------------
         mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 
         List<String> list = new ArrayList<>();
@@ -79,6 +137,7 @@ public class CustomViewAcyivity extends BaseActivity {
         animationDrawable.start();
 
 
+        //------------------------------滚动----------------------------------------------
         String[] strings = new String[]{"打折促销，买一送一，送完为止，先到先得", "喜庆国庆欢乐大酬宾", "热烈欢迎领导光临", "老板和小姨子跑了，跳楼大甩卖"};
         final ScrollBanner scrollBanner = $(R.id.view_banner);
         scrollBanner.setList(Arrays.asList(strings));

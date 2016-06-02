@@ -7,10 +7,26 @@
     <include layout="@layout/view_toolbar" />
 
 
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:autoStart="true"
+        android:visibility="gone" />
+
+    <ViewFlipper
+        android:id="@+id/view_flipper2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:autoStart="true"
+        android:visibility="gone" />
+
+
     <ListView
         android:id="@+id/view_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
 
     <com.pengkv.may.widget.ScrollBanner
         android:id="@+id/view_banner"

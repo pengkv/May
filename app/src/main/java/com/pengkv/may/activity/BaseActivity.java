@@ -87,7 +87,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
+
+    //处理异步消息事件
     @Subscribe
     public void onMainEventBus(EventType eventType) {
     }
+
 }

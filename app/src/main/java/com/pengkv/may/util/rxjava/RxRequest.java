@@ -14,6 +14,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2016/5/23.
+ * https://gank.io/post/56e80c2c677659311bed9841
  */
 public class RxRequest {
     private static final String BASE_URL = "http://www.tngou.net/tnfs/api/";

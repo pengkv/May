@@ -22,6 +22,7 @@ import android.widget.ViewFlipper;
 import com.pengkv.may.R;
 import com.pengkv.may.util.SystemUtil;
 import com.pengkv.may.util.UnitUtil;
+import com.pengkv.may.widget.CarView;
 import com.pengkv.may.widget.ScrollBanner;
 
 import java.util.ArrayList;
@@ -42,12 +43,21 @@ public class CustomViewAcyivity extends BaseActivity {
     WindowManager.LayoutParams mWindowLayoutParams;
     TextView mTv;
     boolean isShowing;//是否正在显示
-
+    int i = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
+
+
+        final CarView carView = $(R.id.view_car);
+        carView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                carView.start();
+            }
+        });
 
 
         //------------------------------滚动----------------------------------------------

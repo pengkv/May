@@ -8,6 +8,7 @@
 
 
     <com.pengkv.may.widget.CarView
+        android:id="@+id/view_car"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:background="@color/gray_light" />

@@ -7,11 +7,20 @@
     <include layout="@layout/view_toolbar" />
 
 
+    <com.pengkv.may.widget.TiltView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/oragnge_deeep"
+        android:scaleType="center"
+        android:src="@drawable/sample_1" />
+
+
     <com.pengkv.may.widget.CarView
         android:id="@+id/view_car"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:background="@color/gray_light" />
+        android:background="@color/gray_light"
+        android:visibility="gone" />
 
 
     <ViewFlipper

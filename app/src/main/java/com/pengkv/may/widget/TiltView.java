@@ -17,6 +17,7 @@ import com.pengkv.may.R;
 
 /**
  * Created by Administrator on 2016/6/6.
+ * 倾斜图片
  */
 public class TiltView extends ImageView {
 

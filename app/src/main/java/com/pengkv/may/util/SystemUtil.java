@@ -2,6 +2,8 @@ package com.pengkv.may.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -98,5 +100,31 @@ public class SystemUtil {
             }
         }
         return statusHeight;
+    }
+
+    /**
+     * 获取渠道号
+     */
+    public static String getUmengChannel(Context context) {
+        String key = "UMENG_CHANNEL";
+        Context ctx = context.getApplicationContext();
+        if (ctx == null) {
+            return null;
+        }
+        String resultData = null;
+        try {
+            PackageManager packageManager = ctx.getPackageManager();
+            if (packageManager != null) {
+                ApplicationInfo applicationInfo = packageManager.getApplicationInfo(ctx.getPackageName(), PackageManager.GET_META_DATA);
+                if (applicationInfo != null) {
+                    if (applicationInfo.metaData != null) {
+                        resultData = applicationInfo.metaData.getString(key);
+                    }
+                }
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return resultData;
     }
 }

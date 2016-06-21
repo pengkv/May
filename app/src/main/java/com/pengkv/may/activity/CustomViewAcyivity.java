@@ -22,6 +22,7 @@ import android.widget.ViewFlipper;
 import com.pengkv.may.R;
 import com.pengkv.may.util.SystemUtil;
 import com.pengkv.may.util.UnitUtil;
+import com.pengkv.may.widget.BezierView;
 import com.pengkv.may.widget.CarView;
 import com.pengkv.may.widget.ScrollBanner;
 
@@ -49,6 +50,15 @@ public class CustomViewAcyivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
+
+
+        final BezierView bezierView = $(R.id.view_bezier);
+        bezierView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bezierView.move();
+            }
+        });
 
 
         final CarView carView = $(R.id.view_car);

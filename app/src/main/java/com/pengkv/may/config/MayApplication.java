@@ -13,7 +13,6 @@ public class MayApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         setAppContext(getApplicationContext());
     }
 

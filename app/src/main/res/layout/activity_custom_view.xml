@@ -8,6 +8,36 @@
     <include layout="@layout/view_toolbar" />
 
 
+    <com.pengkv.may.widget.HomeDragLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-300dp"
+            android:background="@color/oragnge_stand" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-200dp"
+            android:background="@color/oragnge_deeep" />
+
+
+    </com.pengkv.may.widget.HomeDragLayout>
+
+    <com.pengkv.may.widget.BezierView
+        android:id="@+id/view_bezier"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="50dp" />
+
     <com.pengkv.may.widget.TiltView
         android:layout_width="match_parent"
         android:layout_height="100dp"

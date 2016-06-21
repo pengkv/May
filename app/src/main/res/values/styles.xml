@@ -6,10 +6,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Splash" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/layer_splash</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
     <!--标题栏主题-->
     <style name="CustomToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="contentInsetStart">0dp</item>
     </style>
+
 
     <!--主页底部选择按钮-->
     <style name="MainRadioButton">

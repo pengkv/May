@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+    <com.pengkv.may.widget.AxisScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/sample_1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="这种效果在详情页面用的较多，展示个性化内容，图像有强烈的吸引力。这个效果重点使用了CollapsingToolbarLayout 。
+CollapsingToolbarLayout可实现Toolbar的折叠效果。CollapsingToolbarLayout的子视图类似与LinearLayout垂直方向排放。
+
+CollapsingToolbarLayout 提供以下属性和方法是用：
+1. Collapsing title：ToolBar的标题，当CollapsingToolbarLayout全屏没有折叠时，title显示的是大字体，在折叠的过程中，title不断变小到一定大小的效果。你可以调用setTitle(CharSequence)方法设置title。
+2. Content scrim：ToolBar被折叠到顶部固定时候的背景，你可以调用setContentScrim(Drawable)方法改变背景或者 在属性中使用 app:contentScrim=”?attr/colorPrimary”来改变背景。
+3. Status bar scrim：状态栏的背景，调用方法setStatusBarScrim(Drawable)。还没研究明白，不过这个只能在Android5.0以上系统有效果。
+4. Parallax scrolling children：CollapsingToolbarLayout滑动时，子视图的视觉差，可以通过属性app:layout_collapseParallaxMultiplier=”0.6”改变。值de的范围[0.0,1.0]，值越大视察越大。
+5. CollapseMode ：子视图的折叠模式，在子视图设置，有两种“pin”：固定模式，在折叠的时候最后固定在顶端；“parallax”：视差模式，在折叠的时候会有个视差折叠的效果。我们可以在布局中使用属性app:layout_collapseMode=”parallax”来改变。
+
+CoordinatorLayout 还提供了一个 layout_anchor 的属性，连同 layout_anchorGravity 一起，可以用来放置与其他视图关联在一起的悬浮视图（如 FloatingActionButton）。本例中使用FloatingActionButton。
+
+通过下面的参数设置了FloatingActionButton的位置，主界面就短短的几行代码，可能看完这些代码你还是没有明白到底是怎么做到的，没关系，我给大家说说，其实我们是让上面的购买布局和下面的购买布局重合起来了，layout()这个方法是确定View的大小和位置的，然后将其绘制出来，里面的四个参数分别是View的四个点的坐标，他的坐标不是相对屏幕的原点，而且相对于他的父布局来说的，
+我们在主页面最外层的ViewGroup添加了布局状态改变的监听器，当绘制完了屏幕会回调到方法onGlobalLayout()中，我们在onGlobalLayout()方法中手动调用了下onScroll()方法，刚开始myScrollView.getScrollY()等于0，所以说当scrollY小于mBuyLayout.getTop()的时候，上面的购买布局的上边缘到myScrollView的上边缘的距离等于mBuyLayout.getTop()(即下面布局的上边缘到myScrollView的上边缘）所以刚开始上面的购买布局和下面的购买布局重合了。
+当myScrollView向上滚动，而上面购买布局的上边缘始终要和myScrollView的上边缘保持mBuyLayout.getTop()这个距离，所以上面的购买布局也跟着向上滚动，当scrollY大于mBuyLayout.getTop()的时候，表示购买布局上边缘滑动到了导航栏布局，所以此时购买布局的上边缘与myScrollView的上边缘始终要保持scrollY这个距离，所以购买布局才会一直在导航栏下面，就好像粘住了一样，不知道你了解了没有？好了，不过根据这种思路你也可以刚开始使用一个悬浮框来覆盖在下面的购买布局上面，然后onScroll()方法中更新悬浮框的位置，不过悬浮框的x,y不是相对于父布局的，这点要注意下，这样子也能实现效果，不过相对于此，要复杂的多，所以我们遇到类似的功能直接使用这种就行了，简洁明了，好了，你是不迫不及待的想看下效果，那我们接下来就运行下程序吧两个属性共同作用使得FAB 浮动按钮也能折叠消失，展现。"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </com.pengkv.may.widget.AxisScrollView>
+
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:drawableLeft="@drawable/ic_menu_back"
+        android:paddingTop="@dimen/toolbar_padding_top" />
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/green_stand"
+        android:drawableLeft="@drawable/ic_menu_back"
+        android:paddingTop="@dimen/toolbar_padding_top"
+        android:visibility="gone" />
+</RelativeLayout>

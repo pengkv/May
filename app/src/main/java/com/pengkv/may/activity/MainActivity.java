@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CustomViewAcyivity.class));
+                startActivity(new Intent(MainActivity.this, MapAvtivity.class));
             }
         });
     }

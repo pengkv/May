@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,29 +7,66 @@
     <include layout="@layout/view_toolbar" />
 
 
-    <com.pengkv.may.widget.HomeDragLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:id="@+id/drawerLayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--tools:openDrawer="start">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="-300dp"
-            android:background="@color/oragnge_stand" />
+            <!--&lt;!&ndash;<com.baidu.mapapi.map.MapView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/bmapView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="fill_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="fill_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:clickable="true" />&ndash;&gt;-->
 
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="-200dp"
-            android:background="@color/oragnge_deeep" />
+            <com.amap.api.maps2d.MapView
+                android:id="@+id/view_gaode_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+        <!--</LinearLayout>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/lv_drawer"-->
+            <!--android:layout_width="180dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:background="@color/green_light" />-->
+    <!--</android.support.v4.widget.DrawerLayout>-->
 
 
-    </com.pengkv.may.widget.HomeDragLayout>
+    <!--<com.pengkv.may.widget.HomeDragLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<com.amap.api.maps2d.MapView-->
+    <!--android:id="@+id/view_gaode_map"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="400dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_marginBottom="-300dp"-->
+    <!--android:background="@color/oragnge_stand" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="-200dp"-->
+    <!--android:background="@color/oragnge_deeep" />-->
+
+
+    <!--</com.pengkv.may.widget.HomeDragLayout>-->
 
     <com.pengkv.may.widget.BezierView
         android:id="@+id/view_bezier"
@@ -38,28 +74,28 @@
         android:layout_height="match_parent"
         android:padding="50dp" />
 
-    <com.pengkv.may.widget.TiltView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/sample_0"
-        app:type="0" />
+    <!--<com.pengkv.may.widget.TiltView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@drawable/sample_0"-->
+    <!--app:type="0" />-->
 
-    <com.pengkv.may.widget.TiltView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="-15dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/sample_1"
-        app:type="3" />
+    <!--<com.pengkv.may.widget.TiltView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_marginTop="-15dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@drawable/sample_1"-->
+    <!--app:type="3" />-->
 
-    <com.pengkv.may.widget.TiltView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="-15dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/sample_2"
-        app:type="5" />
+    <!--<com.pengkv.may.widget.TiltView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_marginTop="-15dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@drawable/sample_2"-->
+    <!--app:type="5" />-->
 
     <com.pengkv.may.widget.CarView
         android:id="@+id/view_car"

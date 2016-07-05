@@ -26,6 +26,27 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
 
+    //地图包、搜索包需要的基础权限
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    //定位包、导航包需要的额外权限（注：基础权限也需要）
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+
     <application
         android:name=".config.MayApplication"
         android:allowBackup="true"
@@ -37,11 +58,13 @@
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MapAvtivity" />
         <activity android:name=".activity.MainActivity" />
-        <!--<activity android:name=".activity.SpalshActivity" />-->
+        <!-- <activity android:name=".activity.SpalshActivity" /> -->
         <activity android:name=".activity.MiddleHomeActivity" />
         <activity android:name=".activity.CacheActivity" />
         <activity android:name=".activity.ImageListActivity" />
@@ -51,6 +74,13 @@
         <activity android:name=".activity.RxJavaActivity" />
         <activity android:name=".activity.DisLruCacheActivity" />
         <activity android:name=".activity.CustomViewAcyivity" />
+        <activity android:name=".activity.TasksManagerActivity" />
+        <activity android:name=".activity.ScrollingActivity" />
+
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="	yO8d6lP7U41rH08UB8cz6EUUylThLEv0" />
     </application>
 
 </manifest>

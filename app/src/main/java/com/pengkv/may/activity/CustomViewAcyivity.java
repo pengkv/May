@@ -4,8 +4,11 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.amap.api.maps2d.MapView;
+import com.baidu.mapapi.SDKInitializer;
 import com.pengkv.may.R;
 import com.pengkv.may.util.SystemUtil;
 import com.pengkv.may.util.UnitUtil;
@@ -29,6 +34,7 @@ import com.pengkv.may.widget.ScrollBanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2016/5/25.
@@ -46,11 +52,42 @@ public class CustomViewAcyivity extends BaseActivity {
     boolean isShowing;//是否正在显示
     int i = 1;
 
+    MapView mMapView = null;
+
+
+    public static String getDeivceId(Context mActivity) {
+        TelephonyManager telephonyManager = (TelephonyManager) mActivity.getSystemService(Context.TELEPHONY_SERVICE);
+        final String deviceId = telephonyManager.getDeviceId();
+        final String androidId = Settings.Secure.getString(mActivity.getContentResolver(), Settings.Secure.ANDROID_ID);
+        String uuid = "";
+        if (deviceId != null) {
+            uuid = deviceId;
+        } else {
+            if (!"9774d56d682e549c".equals(androidId)) {
+                uuid = androidId;
+            } else {
+                uuid = UUID.randomUUID().toString();
+            }
+        }
+        Log.v("-->", deviceId + "/" + androidId + "/" + UUID.randomUUID().toString());
+        Log.v("-->", deviceId);
+        Log.v("-->", androidId);
+        Log.v("-->", UUID.randomUUID().toString());
+        return uuid;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_custom_view);
 
+//        //获取地图控件引用
+        mMapView = (MapView) findViewById(R.id.view_gaode_map);
+        //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，实现地图生命周期管理
+        mMapView.onCreate(savedInstanceState);
+
+        getDeivceId(this);
 
         final BezierView bezierView = $(R.id.view_bezier);
         bezierView.setOnClickListener(new View.OnClickListener() {
@@ -169,6 +206,34 @@ public class CustomViewAcyivity extends BaseActivity {
                 scrollBanner.stopScroll();
             }
         });
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //在activity执行onResume时执行mMapView.onResume ()，实现地图生命周期管理
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //在activity执行onPause时执行mMapView.onPause ()，实现地图生命周期管理
+        mMapView.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，实现地图生命周期管理
+        mMapView.onSaveInstanceState(outState);
     }
 
 
